@@ -1,0 +1,30 @@
+;WARNING: このファイルの内容は古く、正確ではない
+;VM/nyulan.hppのほうが正確、というか本物である
+MOV dst,src
+AND dst,src
+OR dst,src
+XOR dst,src
+NOT dst
+ADD dst,src
+SUB dst,src
+MUL dst,src
+DIV dst,src
+MOD dst,src
+DADD dst,src ;ADDの小数バージョン レジスタの中身が小数として扱われる
+DSUB dst,src
+DMUL dst,src
+DDIV dst,src
+DMOD dst,src
+PUSHR src    ;srcレジスタの下位8bitをスタックにプッシュ
+PUSHL literal;1バイトスタックにプッシュする
+POP dst      ;dstレジスタの下位8bitにスタックトップをポップする
+STORE addr,src ;addrレジスタの中身のさすメモリ上の1バイトににsrcレジスタの中身の下位8bitをストアする
+LOAD dst,addr
+LSHIFT dst,src ;dstレジスタの中身をsrcレジスタの中身bit左シフトする
+RSHIFT dst,src 
+IFZ addr,src ;srcレジスタの中身が0ならaddrレジスタの中身のアドレスにジャンプする
+IFP addr,src ;正
+IFN addr,src ;負
+GOTO addr
+CALL addr ;アドレスの上位1bitが1のものは全て予約されている
+RET 
